@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/home_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'pages/login_screen.dart'; // Import the login screen
+import 'pages/signup_screen.dart'; // Import the signup screen
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -33,7 +35,13 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      // Replace home with initialRoute and routes
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginScreen(), // Set the login screen as the initial route
+        '/signup': (context) => SignupScreen(), // Define the route for the signup screen
+        '/home': (context) => HomePage(), // Define the route for the home page
+      },
     );
   }
 }
