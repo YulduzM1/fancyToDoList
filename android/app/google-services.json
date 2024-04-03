@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884295758610",
+    "project_id": "flutterfirebasett-ef492",
+    "storage_bucket": "flutterfirebasett-ef492.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884295758610:android:0231238b71a2b913ce39cb",
+        "android_client_info": {
+          "package_name": "com.example.task_list"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGeLv6tTnTs1ZXW0InGIukCVyEkwKuNFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
