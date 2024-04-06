@@ -17,7 +17,7 @@ This Todo List App is a simple and intuitive way to manage your tasks efficientl
 - **Cloud Firestore**: Flexible and scalable NoSQL database for storing and syncing app data.
 
 ## Demo
-![Imgur Image](https://imgur.com/a/GFt6uiG.gif)
+<img src="https://imgur.com/a/08Z6iyM.gif"/>
 
 
 ## Getting Started
