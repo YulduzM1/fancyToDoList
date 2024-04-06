@@ -21,9 +21,32 @@ class SignupForm extends StatefulWidget {
 class _SignupFormState extends State<SignupForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   Future<void> _signUpWithEmailAndPassword() async {
     try {
+      // Check if passwords match
+      if (_passwordController.text.trim() != _confirmPasswordController.text.trim()) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Passwords do not match.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
       // Create a new user with email and password
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
@@ -52,6 +75,11 @@ class _SignupFormState extends State<SignupForm> {
           TextField(
             controller: _passwordController,
             decoration: InputDecoration(labelText: 'Password'),
+            obscureText: true,
+          ),
+          TextField(
+            controller: _confirmPasswordController,
+            decoration: InputDecoration(labelText: 'Confirm Password'),
             obscureText: true,
           ),
           SizedBox(height: 16),

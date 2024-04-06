@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginScreen(), // Set the login screen as the initial route
         '/signup': (context) => SignupScreen(), // Define the route for the signup screen
-        '/home': (context) => HomePage(), // Define the route for the home page
+        '/home': (context) => const HomePage(), // Define the route for the home page
       },
     );
   }

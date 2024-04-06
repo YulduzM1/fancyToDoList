@@ -32,8 +32,33 @@ class _LoginFormState extends State<LoginForm> {
 
       // Navigate to the home page after successful authentication
       Navigator.pushReplacementNamed(context, '/home');
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = 'Try again, wrong email/password';
+      if (e.code == 'user-not-found') {
+        errorMessage = 'Email not found';
+      } else if (e.code == 'wrong-password') {
+        errorMessage = 'Wrong password';
+      }
+      // Show error dialog
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Login Error'),
+            content: Text(errorMessage),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     } catch (error) {
-      // Handle authentication errors
+      // Handle other errors
       print('Error signing in: $error');
     }
   }

@@ -22,20 +22,23 @@ class DatabaseService {
   Stream<QuerySnapshot> getTodos() {
     return _todosRef.snapshots();
   }
-
-  void addTodo(Todo todo) async {
+Future<void> addTodo(Todo todo) async {
+  final user = _auth.currentUser;
+  if (user != null) {
     try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        todo.uid = user.uid; // Set UID of the authenticated user
-        await _todosRef.add(todo);
-      } else {
-        throw Exception("User not authenticated");
-      }
+      todo.uid = user.uid; // Set UID of the authenticated user
+      await _todosRef.add(todo); // Pass Todo object directly to Firestore
     } catch (error) {
       print('Error adding todo: $error');
+      throw Exception('Error adding todo: $error');
     }
+  } else {
+    throw Exception("User not authenticated");
   }
+}
+
+
+
 
   void updateTodo(String todoId, Todo todo) {
     _todosRef.doc(todoId).update(todo.toJson());
