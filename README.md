@@ -16,6 +16,9 @@ This Todo List App is a simple and intuitive way to manage your tasks efficientl
 - **Firebase**: Backend services for authentication and real-time database management.
 - **Cloud Firestore**: Flexible and scalable NoSQL database for storing and syncing app data.
 
+## Demo
+![Demo](https://i.imgur.com/3gJqeFz.gif)
+
 ## Getting Started
 
 ```bash
